@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #17191d;
+  --color-surface: #22252b;
+  --color-surface-2: #2a2e35;
+  --color-line: #343840;
+  --color-lime: #c8ff36;
+  --color-ember: #ff7547;
+  --color-danger: #ff4d4f;
+  --color-ink: #f3f4f6;
+  --color-mute: #a1a1aa;
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Bebas Neue', 'Manrope', sans-serif;
+  --radius-card: 1.25rem;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+:focus-visible {
+  outline: 2px solid var(--color-lime);
+  outline-offset: 2px;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.num {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.skeleton {
+  background: linear-gradient(90deg, #22252b 25%, #2a2e35 50%, #22252b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 0.75rem;
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.rise {
+  animation: rise 0.28s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+}
